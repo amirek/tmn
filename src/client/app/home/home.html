@@ -1,0 +1,58 @@
+<section id="home-view" class="mainbar">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <!--<div class="col-sm-4" style="background-color: #52b9e9">-->
+                <!--User: {{ vm.currentUser | json }}-->
+                <!--<div style="background-color: #f8f8f8">-->
+                <!--Classes( {{ vm.events.length }} ): {{ vm.events | json }}-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <div>
+                    <div class="row">
+                        <div class="col-md-5 text-center">
+                            <div class="btn-group">
+                                <button class="btn btn-primary btn-sm" mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView"> Previous</button>
+                                <button class="btn btn-default  btn-sm" mwl-date-modifier date="vm.viewDate" set-to-today> Today</button>
+                                <button class="btn btn-primary  btn-sm" mwl-date-modifier date="vm.viewDate" increment="vm.calendarView"> Next</button>
+                            </div>
+                        </div>
+
+                        <br class="visible-xs visible-sm">
+                        <div class="col-md-2 text-center">
+                            <button class="btn btn-primaty btn-success btn-sm" ng-click="vm.bookNew()"> Book a class!</button>
+                        </div>
+                        <div class="col-md-5 text-center">
+                            <div class="btn-group">
+                                <label class="btn btn-primary btn-sm" ng-model="vm.calendarView" uib-btn-radio="'month'"> Month view </label>
+                                <label class="btn btn-primary btn-sm" ng-model="vm.calendarView" uib-btn-radio="'week'"> Week view </label>
+                                <label class="btn btn-primary btn-sm" ng-model="vm.calendarView" uib-btn-radio="'day'"> Day view </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <mwl-calendar
+                        events="vm.events"
+                        view="vm.calendarView"
+                        view-title="vm.calendarTitle"
+                        view-date="vm.viewDate"
+                        on-event-click="vm.eventClicked(calendarEvent)"
+                        on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+                        edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
+                        delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
+                        on-edit-event-click="vm.eventEdited(calendarEvent)"
+                        on-delete-event-click="vm.eventDeleted(calendarEvent)"
+                        cell-is-open="vm.isCellOpen"
+                        day-view-start="06:00"
+                        day-view-end="22:00"
+                        day-view-split="30"
+                        cell-modifier="vm.modifyCell(calendarCell)">
+                    </mwl-calendar>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

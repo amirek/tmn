@@ -1,0 +1,43 @@
+<div class="modal-header">
+    <h3 class="modal-title">Edit booking</h3>
+</div>
+<div class="modal-body">
+
+    <table>
+        <tbody>
+        <tr>
+            <td><label for="subject">Class subject</label></td>
+            <td><span id="subject">{{vm.event.title}}</span></td>
+        </tr>
+        <tr>
+            <td><label for="otherParty">{{ vm.userTitle }}</label></td>
+            <td><span name="otherParty" id="otherParty">{{vm.userObject.Name}}</span></td>
+        </tr>
+        <tr>
+            <td><label for="startDate">Start</label></td>
+            <td>
+                <p class="input-group"><input type="text" class="form-control col-xs-8" datetime-picker="dd MMM yyyy HH:mm" ng-model="vm.event.startsAt" is-open="vm.startsAtOpen" name="startDate"
+                                              id="startDate"/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="vm.openCalendar($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span></p>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="duration">Duration(minutes)</label></td>
+            <td><input type="number" ng-model="vm.duration" name="duration" id="duration" step="{{vm.durationStep}}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!--<p>Event:-->
+    <!--<pre>{{ vm.event | json }}</pre>-->
+    <div class="modal-footer">
+        <button class="btn btn-primary btn-danger" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary" ng-click="update()">OK</button>
+    </div>
+</div>
